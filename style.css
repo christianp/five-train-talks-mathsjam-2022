@@ -1,0 +1,127 @@
+:root {
+    --text-color: white;
+    --bg-color: black;
+    --seat-color: gray;
+    --top-padding: 5vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 5vh;
+    font-family: sans-serif;
+}
+body {
+    background: var(--seat-color);
+    margin: 0;
+}
+a {
+    color: var(--text-color);
+}
+main {
+    height: 100vh;
+    overflow: hidden;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    display: grid;
+    align-content: center;
+    grid-auto-flow: column;
+    scrollbar-color: var(--main) var(--background);
+    width: 100vw;
+    scroll-behavior: smooth;
+}
+
+main > section {
+    position: relative;
+    color: var(--text-color);
+    width: 100vw;
+    height: 100vh;
+    padding: 3vh calc((100vw - 16/9*100vh)/2);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    scroll-snap-align: center;
+    overflow: hidden;
+    --cols: 1;
+    grid-template-columns: repeat(var(--cols),1fr);
+    grid-gap: 1em;
+    grid-template-rows: max-content;
+    grid-auto-rows: max-content;
+}
+main > section::before {
+    background: url(images/bg.svg) top/100vw 100vh repeat-x;
+    background-color: var(--bg-color);
+    content: '.';
+    color: hsla(0,0%,0%,0);
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+}
+main > section.center {
+    align-content: center;
+}
+main > section.scroll {
+    overflow-y: scroll;
+}
+@media (max-aspect-ratio: 16/9) {
+    html {
+        font-size: calc(9/16*5vw);
+    }
+    main > section {
+        padding: var(--top-padding) 3vw calc((100vh - var(--top-padding) - 9/16*100vw)/2) 3vw;
+    }
+}
+
+main > section:focus {
+    outline: none;
+}
+h1,h2,h3,h4,h5,h6 {
+    text-align: center;
+    grid-column: 1 / -1;
+    margin: 0.5rem 0 0 0;
+}
+p {
+    line-height: 1.5em;
+    max-width: 30em;
+    margin: 0;
+}
+em {
+    font-weight: bold;
+}
+img {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 0.5em;
+    border: 0.2em solid hsl(260,20%,20%);
+}
+
+ul {
+    margin: 0;
+}
+
+li ~ li {
+    margin-top: 1em;
+}
+
+.app {
+    overflow: hidden;
+}
+
+.reference {
+    font-style: italic;
+}
+
+railway-app, shunting-yard-app {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+railway-app > slot {
+    display: none;
+}

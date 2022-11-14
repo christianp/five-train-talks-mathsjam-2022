@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Shunting yard animation</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <main>
+            <railway-app viewBox="50 1300 -50 900" speed="0.2" curvature="true">
+                <slot name="segments">
+start (S 300, C 360 2400)
+                </slot>
+                <slot name="trains">
+(follow continuous forwards [0], wait 600)
+
+                </slot>
+            </railway-app>
+
+            <!--
+            <railway-app viewBox="-550 150 -300 100" speed="0.1" controls="false">
+                <slot name="segments">
+start (L, L, L, R, L, R, L, L, L, L, R, L, R, L, L, L, R, L, L)
+                </slot>
+                <slot name="trains">
+(follow continuous forwards [0], wait 600)
+
+                </slot>
+            </railway-app>
+            -->
+        </main>
+
+        <script src="show-error.mjs" type="module"></script>
+        <script src="app.js"></script>
+        <script src="load-app.js" type="module"></script>
+    </body>
+</html>

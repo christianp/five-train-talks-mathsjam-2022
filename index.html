@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Five Talks About Trains</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="style.css" id="theme">
+        <script>
+            graph_app_base_url = 'graph_app/';
+        </script>
+        <script src="railway-app/app.js"></script>
+        <script src="railway-app/load-app.js" type="module"></script>
+        <script src="shunting-yard-animation/app.js"></script>
+        <script src="shunting-yard-animation/load-app.js" type="module"></script>
+        <script src="presentation.js" type="module"></script>
+    </head>
+    <body>
+        <main>
+            <section tabindex="0" id="title">
+                <h1>Five Talks About Trains</h1>
+                <p>Christian Lawson-Perfect</p>
+                <railway-app viewBox="-550 150 -300 100" speed="0.1" controls="false" style="height:50vh">
+                    <slot name="segments">
+                        start (L 100, L 100, L 100, L 100, S 400, L 100, L 100, L 100, L 100, S 400) 
+                    </slot>
+                    <slot name="trains">
+                        (follow continuous forwards 0)
+                    </slot>
+                </railway-app>
+            </section>
+
+            <section class="center">
+                <img src="images/thomas.png" alt="Thomas the Tank Engine wearing an FFP2 mask">
+            </section>
+
+            <section>
+                <h2>Trains are Turing complete</h2>
+                <railway-app viewBox="-750 120 -300 100" style="height: 50vh">
+                    <slot name="segments">
+                        end (S 500, R 100, S 200, L 100)
+                        end (S 1000)
+                        start (S 500)
+                    </slot>
+                    <slot name="trains">
+                        (follow continuous forwards [0,2])
+                        (wait 900, follow continuous forwards [1,2])
+                    </slot>
+                </railway-app>
+                <p class="reference"><a target="reference" href="http://www.monochrom.at/turingtrainterminal/Chalcraft.pdf"><em>Train Sets</em> - Adam Chalcraft and Michael Greene</a></p>
+                <a target="reference" href="http://www.cr31.co.uk/stagecast/trains/tt9_addsub.html">Excellent explanation by Guy Walker</a>
+            </section>
+
+            <section class="scroll">
+                <h2>Topological railway oddities</h2>
+                <railway-app viewBox="150 1400 -400 100" style="height: 50vh" speed="0.3">
+                    <slot name="segments">
+                        start (S 1200, L 100, L 100, S 100, L 100, L 100, S 700, L 100, L 100, S 500)
+                    </slot>
+                    <slot name="trains">
+                        (follow continuous forwards 0)
+                    </slot>
+                </railway-app>
+                <img src="images/metro.png" style="margin:20vh 0;">
+                <p class="reference"><a target="reference" href="http://mic-ro.com/metro/metrorings.html">Metro rings and loops</a></p>
+            </section>
+
+            <section>
+                <h2>Lost luggage on a train!</h2>
+                <img src="images/lost-luggage-train.svg" style="width: 90vw">
+                <p class="reference"><a target="reference" href="http://theadventuresofdavidcushing.blogspot.com/2012/11/princess-on-train.html">via David Cushing</a></p>
+            </section>
+
+            <section>
+                <h2>Brio Algebra</h2>
+            <railway-app viewBox="-250 500 -450 100" speed="0.2" rails="brio" controls="false" style="height: 50vh">
+                <slot name="segments">
+                    start (L, R, L, R, L, L, L, L, R, L, L, R, L, L, R, L, L, L)
+                </slot>
+                <slot name="trains">
+                    (follow stopstart forwards [0], wait 600)
+                </slot>
+            </railway-app>
+                <div class="reference">
+                    <p class="reference"><a target="reference" href="https://lamington.wordpress.com/2011/12/02/laying-train-tracks/"><em>Laying train tracks</em> - Danny Calegari</a></p>
+                    <p class="reference"><a target="reference" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291098-2418%28199608/09%299%3A1/2%3C113%3A%3AAID-RSA8%3E3.0.CO%3B2-%23"><em>Random  Railways Modeled as Random 3-Regular Graphs</em> - Hans Garmo</a></p>
+                </div>
+            </section>
+
+            <section>
+                <h2>The shunting yard algorithm</h2>
+                <shunting-yard-app></shunting-yard-app>
+                <p class="reference"><a target="reference" href="https://somethingorotherwhatever.com/shunting-yard-animation/">Interactive</a></p>
+            </section>
+
+            <section>
+                <h2>Clothoid corners</h2>
+                <railway-app viewBox="50 800 -50 450" speed="0.1" style="height:80vh">
+                    <slot name="segments">
+                    start (S 300, C 360 1200)
+                    </slot>
+                    <slot name="trains">
+                    (follow continuous forwards [0], wait 600)
+
+                    </slot>
+                </railway-app>
+                <p class="reference"><a target="reference" href="https://pwayblog.com/2016/07/03/the-clothoid/">Railway corners are clothoids</a>.</p>
+            </section>
+            <section>
+                <h2>Clothoid corners</h2>
+                <railway-app viewBox="50 800 -50 450" speed="0.1" curvature="true" style="height:80vh">
+                    <slot name="segments">
+                    start (S 300, C 360 1200)
+                    </slot>
+                    <slot name="trains">
+                    (follow continuous forwards [0], wait 600)
+
+                    </slot>
+                </railway-app>
+                <p class="reference"><a target="reference" href="https://pwayblog.com/2016/07/03/the-clothoid/">Railway corners are clothoids</a>.</p>
+            </section>
+        </main>
+    </body>
+</html>
