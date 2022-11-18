@@ -185,9 +185,12 @@ train_position time train =
                             ((x, y), o) = point_on_railway io position pieces d
                             (dx, dy) = case direction of
                                 Forwards -> (0, 0)
-                                Backwards -> (-ox, -oy)
+                                Backwards -> (0, 0)
+                            vo = case direction of
+                                Forwards -> o
+                                Backwards -> o + pi
                         in
-                            ((x+dx, y+dy), o)
+                            ((x+dx, y+dy), vo)
                             
                     _ -> (position, orientation)
 

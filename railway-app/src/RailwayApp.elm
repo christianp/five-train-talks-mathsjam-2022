@@ -363,7 +363,7 @@ update msg model = case msg of
         else
             nocmd model
     
-    VisibilityChange visible -> { model | app_visible = Debug.log "visible" visible } |> nocmd
+    VisibilityChange visible -> { model | app_visible = visible } |> nocmd
 
 subscriptions : Model -> Sub Msg
 subscriptions model = Sub.batch

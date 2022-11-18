@@ -7590,7 +7590,6 @@ var $author$project$Util$fmod = F2(
 			}
 		}
 	});
-var $elm$core$Debug$log = _Debug_log;
 var $elm$core$Basics$neq = _Utils_notEqual;
 var $author$project$RailwayApp$update_train = F2(
 	function (model, train) {
@@ -7643,9 +7642,7 @@ var $author$project$RailwayApp$update = F2(
 				return $author$project$RailwayApp$nocmd(
 					_Utils_update(
 						model,
-						{
-							app_visible: A2($elm$core$Debug$log, 'visible', visible)
-						}));
+						{app_visible: visible}));
 		}
 	});
 var $elm$json$Json$Decode$value = _Json_decodeValue;
@@ -7966,10 +7963,10 @@ var $author$project$Railway$point_on_railway = F4(
 var $author$project$Train$train_position = F2(
 	function (time, train) {
 		var handle_action = F2(
-			function (action, _v9) {
-				var position = _v9.a;
-				var orientation = _v9.b;
-				var t = _v9.c;
+			function (action, _v10) {
+				var position = _v10.a;
+				var orientation = _v10.b;
+				var t = _v10.c;
 				if (t <= 0) {
 					return _Utils_Tuple3(position, orientation, t);
 				} else {
@@ -7994,18 +7991,25 @@ var $author$project$Train$train_position = F2(
 							var x = _v6.a;
 							var y = _v6.b;
 							var o = _v5.b;
+							var vo = function () {
+								if (direction.$ === 'Forwards') {
+									return o;
+								} else {
+									return o + $elm$core$Basics$pi;
+								}
+							}();
 							var _v7 = function () {
 								if (direction.$ === 'Forwards') {
 									return _Utils_Tuple2(0, 0);
 								} else {
-									return _Utils_Tuple2(-ox, -oy);
+									return _Utils_Tuple2(0, 0);
 								}
 							}();
 							var dx = _v7.a;
 							var dy = _v7.b;
 							return _Utils_Tuple2(
 								_Utils_Tuple2(x + dx, y + dy),
-								o);
+								vo);
 						} else {
 							return _Utils_Tuple2(position, orientation);
 						}

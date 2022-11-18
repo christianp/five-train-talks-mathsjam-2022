@@ -9,15 +9,19 @@
 
     <body>
         <main>
-            <railway-app viewBox="50 1300 -50 900" speed="0.2" curvature="true">
-                <slot name="segments">
-start (S 300, C 360 2400)
-                </slot>
-                <slot name="trains">
-(follow continuous forwards [0], wait 600)
-
-                </slot>
-            </railway-app>
+                <railway-app viewBox="-550 120 -300 100" style="height: 50vh" speed="0.1">
+                    <slot name="segments">
+                        end (S 600, R 100, S 200, L 100)
+                        end (S 1000)
+                        start (S 500)
+                    </slot>
+                    <slot name="trains">
+                        (follow continuous forwards [0,2])
+                        (wait 900, follow continuous backwards [0,2])
+                        (wait 2000, follow continuous forwards [1,2])
+                        (wait 3000, follow continuous backwards [1,2])
+                    </slot>
+                </railway-app>
 
             <!--
             <railway-app viewBox="-550 150 -300 100" speed="0.1" controls="false">

@@ -45,7 +45,6 @@ class RailwayAppElement extends HTMLElement {
 
         const intersection_observer = new IntersectionObserver((events) => {
             for(let e of events) {
-                console.log(e.isIntersecting);
                 app.ports.visibilityChange.send(e.isIntersecting);
             }
         }, document.body);
